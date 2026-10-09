@@ -117,7 +117,7 @@ LLM 经常默默选择一种解释然后执行。这个原则强制明确推理�
 /plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
-在单个 Claude Code 项目中使用时，可以把指南合并到 `CLAUDE.md`，或者同时复制本仓库的 `CLAUDE.md` 和 `AGENTS.md`。兼容入口 `CLAUDE.md` 会要求 agent 读取 `AGENTS.md`。
+在单个 Claude Code 项目中使用时，可以把指南合并到 `CLAUDE.md`，或者同时复制本仓库的 `CLAUDE.md` 和 `AGENTS.md`。兼容入口 `CLAUDE.md` 使用 `@AGENTS.md` 自动导入指南。
 
 ## 在 Cursor 中使用
 

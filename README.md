@@ -117,7 +117,7 @@ The existing Claude plugin remains available. From within Claude Code:
 /plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
-For per-project Claude Code use, merge the guidelines into `CLAUDE.md`, or copy both `CLAUDE.md` and `AGENTS.md` from this repository. The compatibility `CLAUDE.md` tells the agent to read `AGENTS.md`.
+For per-project Claude Code use, merge the guidelines into `CLAUDE.md`, or copy both `CLAUDE.md` and `AGENTS.md` from this repository. The compatibility `CLAUDE.md` uses `@AGENTS.md` to import the guidelines automatically.
 
 ## Using with Cursor
 
