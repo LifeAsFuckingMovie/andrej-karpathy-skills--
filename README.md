@@ -1,10 +1,10 @@
-# Karpathy-Inspired Claude Code Guidelines
+# Karpathy-Inspired Coding Agent Guidelines
 
 > Check out my new project [Multica](https://github.com/multica-ai/multica) — an open-source platform for running and managing coding agents with reusable skills.
 >
 > Follow me on X: [https://x.com/jiayuan_jy](https://x.com/jiayuan_jy)
 
-A single `CLAUDE.md` file to improve Claude Code behavior, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
+Tool-independent coding guidelines, available as [`AGENTS.md`](AGENTS.md) project instructions and a reusable [`SKILL.md`](skills/karpathy-guidelines/SKILL.md) for agents that support Agent Skills, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
 
 English | [简体中文](./README.zh.md)
 
@@ -98,32 +98,26 @@ Strong success criteria let the LLM loop independently. Weak criteria ("make it 
 
 ## Install
 
-**Option A: Claude Code Plugin (recommended)**
+**Option A: AGENTS.md (per-project)**
 
-From within Claude Code, first add the marketplace:
-```
-/plugin marketplace add forrestchang/andrej-karpathy-skills
-```
+Copy [`AGENTS.md`](AGENTS.md) into your project root. If the project already has an `AGENTS.md`, merge these guidelines into it rather than overwriting existing instructions.
 
-Then install the plugin:
-```
+Use the exact filename `AGENTS.md` (uppercase, plural). Agents that support this instruction file can load it; for other tools, merge the contents into the instruction file that tool supports. Renaming a file to `agent.md` alone does not make every agent discover it.
+
+**Option B: Agent Skill (reusable)**
+
+Copy the entire [`skills/karpathy-guidelines/`](skills/karpathy-guidelines/) folder into your agent's supported skills directory, preserving `karpathy-guidelines/SKILL.md`. The skill uses standard `name` and `description` frontmatter and contains no Claude-specific commands. Installation paths and automatic activation depend on the agent.
+
+**Option C: Claude Code Plugin (optional)**
+
+The existing Claude plugin remains available. From within Claude Code:
+
+```text
+/plugin marketplace add LifeAsFuckingMovie/andrej-karpathy-skills--
 /plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
-This installs the guidelines as a Claude Code plugin, making the skill available across all your projects.
-
-**Option B: CLAUDE.md (per-project)**
-
-New project:
-```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md
-```
-
-Existing project (append):
-```bash
-echo "" >> CLAUDE.md
-curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
-```
+For per-project Claude Code use, merge the guidelines into `CLAUDE.md`, or copy both `CLAUDE.md` and `AGENTS.md` from this repository. The compatibility `CLAUDE.md` uses `@AGENTS.md` to import the guidelines automatically.
 
 ## Using with Cursor
 
@@ -148,7 +142,7 @@ These guidelines are working if you see:
 
 ## Customization
 
-These guidelines are designed to be merged with project-specific instructions. Add them to your existing `CLAUDE.md` or create a new one.
+These guidelines are designed to be merged with project-specific instructions. Add them to your existing `AGENTS.md` or create a new one.
 
 For project-specific rules, add sections like:
 

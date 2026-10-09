@@ -1,10 +1,10 @@
-# 受 Karpathy 启发的 Claude Code 指南
+# 受 Karpathy 启发的通用编码 Agent 指南
 
 > 查看我的新项目 [Multica](https://github.com/multica-ai/multica) —— 一个用于运行和管理编码智能体的开源平台，支持可复用的技能。
 >
 > 在 X 上关注我：[https://x.com/jiayuan_jy](https://x.com/jiayuan_jy)
 
-一个单一的 `CLAUDE.md` 文件，用于改善 Claude Code 的行为，源自 [Andrej Karpathy 的观察](https://x.com/karpathy/status/2015883857489522876) 关于 LLM 编码陷阱的总结。
+一份与工具无关的编码指南，提供项目指令文件 [`AGENTS.md`](AGENTS.md)，以及供支持 Agent Skills 的智能体使用的可复用 [`SKILL.md`](skills/karpathy-guidelines/SKILL.md)，源自 [Andrej Karpathy 的观察](https://x.com/karpathy/status/2015883857489522876) 关于 LLM 编码陷阱的总结。
 
 [English](./README.md) | 简体中文
 
@@ -98,32 +98,26 @@ LLM 经常默默选择一种解释然后执行。这个原则强制明确推理�
 
 ## 安装
 
-**选项 A：Claude Code 插件（推荐）**
+**选项 A：AGENTS.md（按项目）**
 
-在 Claude Code 中，首先添加插件市场：
-```
-/plugin marketplace add forrestchang/andrej-karpathy-skills
-```
+将 [`AGENTS.md`](AGENTS.md) 复制到项目根目录。如果项目已经有 `AGENTS.md`，将这些指南合并进去，不要覆盖已有项目指令。
 
-然后安装插件：
-```
+文件名使用 `AGENTS.md`（大写、复数）。支持该指令文件的 agent 可以加载它；其他工具需要将正文合并到各自支持的指令文件。仅改名为 `agent.md` 不能保证所有 agent 自动识别。
+
+**选项 B：Agent Skill（可复用）**
+
+将整个 [`skills/karpathy-guidelines/`](skills/karpathy-guidelines/) 文件夹复制到你的 agent 支持的技能目录，保留 `karpathy-guidelines/SKILL.md` 结构。技能采用标准的 `name` 和 `description` 元数据，不含 Claude 专用命令。安装路径和是否自动启用取决于具体 agent。
+
+**选项 C：Claude Code 插件（可选）**
+
+保留现有 Claude 插件支持。在 Claude Code 中执行：
+
+```text
+/plugin marketplace add LifeAsFuckingMovie/andrej-karpathy-skills--
 /plugin install andrej-karpathy-skills@karpathy-skills
 ```
 
-这会将指南安装为 Claude Code 插件，使其在你所有项目中可用。
-
-**选项 B：CLAUDE.md（按项目）**
-
-新项目：
-```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md
-```
-
-已有项目（追加）：
-```bash
-echo "" >> CLAUDE.md
-curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
-```
+在单个 Claude Code 项目中使用时，可以把指南合并到 `CLAUDE.md`，或者同时复制本仓库的 `CLAUDE.md` 和 `AGENTS.md`。兼容入口 `CLAUDE.md` 使用 `@AGENTS.md` 自动导入指南。
 
 ## 在 Cursor 中使用
 
@@ -148,7 +142,7 @@ curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/
 
 ## 定制
 
-这些指南设计用于与项目特定指令合并。将它们添加到你现有的 `CLAUDE.md` 或创建一个新的。
+这些指南设计用于与项目特定指令合并。将它们添加到你现有的 `AGENTS.md` 或创建一个新的。
 
 对于项目特定规则，添加如下章节：
 
